@@ -4,11 +4,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import sample.Main;
 
-public class SetStudentController {
+public class ShowStudentsController {
     Main main = new Main();
     Stage stage = new Stage();
 
@@ -19,19 +19,25 @@ public class SetStudentController {
     private URL location;
 
     @FXML
-    private Button addStudentButton;
-
-    @FXML
     private Button backButton;
 
     @FXML
-    private TextField enterNameLastnameField;
+    private TableColumn<?, ?> collumBonus;
 
     @FXML
-    private TextField enterNameLastnameField1;
+    private TableColumn<?, ?> collumLastName;
 
     @FXML
-    private TextField enterNameLastnameField11;
+    private TableColumn<?, ?> collumName;
+
+    @FXML
+    private TableColumn<?, ?> collumQuestion;
+
+    @FXML
+    private TableColumn<?, ?> collumTeam;
+
+    @FXML
+    private TableColumn<?, ?> collunAnswer;
 
     @FXML
     void initialize() {
