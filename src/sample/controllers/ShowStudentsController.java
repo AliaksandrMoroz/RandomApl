@@ -37,7 +37,7 @@ public class ShowStudentsController {
     private TableColumn<?, ?> collumTeam;
 
     @FXML
-    private TableColumn<?, ?> collunAnswer;
+    private TableColumn<?, ?> collumAnswer;
 
     @FXML
     void initialize() {

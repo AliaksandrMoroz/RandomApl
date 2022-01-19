@@ -25,7 +25,7 @@
                       <TableColumn fx:id="collumName" prefWidth="140.0" text="Имя" />
                         <TableColumn fx:id="collumTeam" prefWidth="100.0" text="Команда" />
                         <TableColumn fx:id="collumQuestion" prefWidth="100.0" text="Вопрос" />
-                        <TableColumn fx:id="collunAnswer" prefWidth="100.0" text="Ответ" />
+                        <TableColumn fx:id="collumAnswer" prefWidth="100.0" text="Ответ" />
                         <TableColumn fx:id="collumBonus" prefWidth="100.0" text="Доп. балл" />
                     </columns>
                   </TableView>
