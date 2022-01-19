@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class mainController {
+public class MainController {
 
     @FXML
     private ResourceBundle resources;
