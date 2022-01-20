@@ -19,14 +19,14 @@
                 </Button>
             <ScrollPane layoutY="-6.0" prefHeight="514.0" prefWidth="702.0">
                <content>
-                  <TableView prefHeight="697.0" prefWidth="684.0">
+                  <TableView fx:id="table" prefHeight="697.0" prefWidth="684.0">
                     <columns>
-                      <TableColumn fx:id="collumLastName" prefWidth="140.0" text="Фамилия" />
-                      <TableColumn fx:id="collumName" prefWidth="140.0" text="Имя" />
-                        <TableColumn fx:id="collumTeam" prefWidth="100.0" text="Команда" />
-                        <TableColumn fx:id="collumQuestion" prefWidth="100.0" text="Вопрос" />
-                        <TableColumn fx:id="collumAnswer" prefWidth="100.0" text="Ответ" />
-                        <TableColumn fx:id="collumBonus" prefWidth="100.0" text="Доп. балл" />
+                        <TableColumn fx:id="collumId" prefWidth="35.0" text="id" />
+                      <TableColumn fx:id="collumLastName" prefWidth="170.0" text="Фамилия" />
+                      <TableColumn fx:id="collumName" prefWidth="170.0" text="Имя" />
+                        <TableColumn fx:id="collumQuestion" prefWidth="90.0" text="Вопрос" />
+                        <TableColumn fx:id="collumAnswer" prefWidth="90.0" text="Ответ" />
+                        <TableColumn fx:id="collumBonus" prefWidth="90.0" text="Доп. балл" />
                     </columns>
                   </TableView>
                </content>

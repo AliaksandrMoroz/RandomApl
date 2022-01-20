@@ -1,16 +1,21 @@
 package sample.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.DataBase.DataBaseHandler;
 import sample.Main;
+import sample.Student;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SetStudentController {
     Main main = new Main();
     Stage stage = new Stage();
+
 
     @FXML
     private ResourceBundle resources;
@@ -28,10 +33,10 @@ public class SetStudentController {
     private TextField enterNameLastnameField;
 
     @FXML
-    private TextField enterNameLastnameField1;
+    private Label errorText;
 
     @FXML
-    private TextField enterNameLastnameField11;
+    private TextField newStudentText;
 
     @FXML
     void initialize() {
@@ -41,6 +46,22 @@ public class SetStudentController {
                 main.start(stage);
             } catch (Exception exception) {
                 exception.printStackTrace();
+            }
+        });
+
+        addStudentButton.setOnAction(event -> {
+            String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
+            String[] newStudent= newStudentText.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
+            if(!addText.equals("")&&DataBaseHandler.getAllStudentsFromDB().stream()
+                    .anyMatch(student ->
+                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))){
+                DataBaseHandler.setStudentFromDB(addText[0], addText[1],newStudent[0],newStudent[1]);
+                errorText.setText(addText[0] + " " + addText[1] + " успешно изменен!");
+                enterNameLastnameField.setText("");
+                newStudentText.setText("");
+
+            }else {
+                errorText.setText("Ошибка ввода данных!");
             }
         });
     }

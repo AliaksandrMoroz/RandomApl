@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #4b0082#4b0082;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddStudentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #4b0082#4b0082;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.fxml.DeleteStudentController">
     <children>
         <AnchorPane layoutX="1.0" layoutY="81.0" prefHeight="619.0" prefWidth="700.0" style="-fx-background-color: #faebd7#faebd7;">
             <children>
-                <Button fx:id="addStudentButton" layoutX="202.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Удалить">
+                <Button fx:id="deleteStudentButton" layoutX="202.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Удалить">
                     <font>
                         <Font size="31.0" />
                     </font>
@@ -25,6 +25,11 @@
                         <Font size="31.0" />
                     </font>
                 </Button>
+            <Label fx:id="errorText" layoutX="107.0" layoutY="208.0" prefHeight="21.0" prefWidth="487.0" textAlignment="CENTER" textFill="#da3e3e" wrapText="true">
+               <font>
+                  <Font name="New Peninim MT" size="32.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="RANDOMAZER" textAlignment="RIGHT" textFill="#da3e3e" wrapText="true">

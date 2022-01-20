@@ -2,8 +2,10 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.DataBase.DataBaseHandler;
 import sample.Main;
 
 import java.net.URL;
@@ -31,7 +33,7 @@ public class AddStudentController {
     private TextField enterNameLastnameField;
 
     @FXML
-    private TextField numberCommandField;
+    private Label errorText;
 
     @FXML
     void initialize() {
@@ -41,6 +43,17 @@ public class AddStudentController {
                 main.start(stage);
             } catch (Exception exception) {
                 exception.printStackTrace();
+            }
+        });
+
+        addStudentButton.setOnAction(event -> {
+            String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
+            if(!addText.equals("")){
+                DataBaseHandler.addStudentFromDB(addText[0], addText[1]);
+                errorText.setText(addText[0] + " " + addText[1] + " успешно добавлен!");
+                enterNameLastnameField.setText("");
+            }else {
+                errorText.setText("Ошибка ввода данных!");
             }
         });
 
