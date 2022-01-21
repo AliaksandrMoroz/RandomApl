@@ -137,8 +137,7 @@ public class RandomStudentVsStudentController {
         updateLists();
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("Студент не найден.");
-            studentNameAnswer.setText("");
-            studentNameQuestion.setText("");
+
         } else {
             if (studentAnswer.getQuestion().equals("x")) {
                 studentQuestion = studentAnswer;
@@ -153,8 +152,7 @@ public class RandomStudentVsStudentController {
         updateLists();
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("Студент не найден.");
-            studentNameAnswer.setText("");
-            studentNameQuestion.setText("");
+
         } else {
 
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
