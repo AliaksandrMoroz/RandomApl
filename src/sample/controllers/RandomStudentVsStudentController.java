@@ -125,8 +125,9 @@ public class RandomStudentVsStudentController {
 
     private void nextPair() {
         updateLists();
-        if (listStudentAnswer.size() <=1 && listStudentQuestion.size() <=1) {
+        if (listStudentAnswer.size() <1 || listStudentQuestion.size() <1) {
             errorTEXT.setText("Студент не найден.");
+
         } else {
             if (studentAnswer.getQuestion().equals("x")) {
                 studentQuestion = studentAnswer;
@@ -139,8 +140,9 @@ public class RandomStudentVsStudentController {
 
     private void firstPair() {
         updateLists();
-        if (listStudentAnswer.size() <= 1 && listStudentQuestion.size() <=1) {
+        if (listStudentAnswer.size() < 1 || listStudentQuestion.size() <1) {
             errorTEXT.setText("Студент не найден.");
+
         } else {
 
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
