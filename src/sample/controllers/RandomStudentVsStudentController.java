@@ -101,16 +101,17 @@ public class RandomStudentVsStudentController {
 
             if (bonusBallCheckAnswer.isSelected()) {
                 studentAnswer.setBonusBall("1");
-                bonusBallCheckAnswer.fire();}
+                bonusBallCheckAnswer.fire();
+            }
 
 
-            for (Student student:
-                 listStudent) {
-                if(student.getId()==studentAnswer.getId()){
-                    student=studentAnswer;
+            for (Student student :
+                    listStudent) {
+                if (student.getId() == studentAnswer.getId()) {
+                    student = studentAnswer;
                 }
-                if (student.getId()==studentQuestion.getId()){
-                    student=studentQuestion;
+                if (student.getId() == studentQuestion.getId()) {
+                    student = studentQuestion;
                 }
             }
 
@@ -134,9 +135,10 @@ public class RandomStudentVsStudentController {
 
     private void nextPair() {
         updateLists();
-        if (listStudentAnswer.size() <1 || listStudentQuestion.size() <1) {
+        if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("Студент не найден.");
-
+            studentNameAnswer.setText("");
+            studentNameQuestion.setText("");
         } else {
             if (studentAnswer.getQuestion().equals("x")) {
                 studentQuestion = studentAnswer;
@@ -149,9 +151,10 @@ public class RandomStudentVsStudentController {
 
     private void firstPair() {
         updateLists();
-        if (listStudentAnswer.size() < 1 || listStudentQuestion.size() <1) {
+        if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("Студент не найден.");
-
+            studentNameAnswer.setText("");
+            studentNameQuestion.setText("");
         } else {
 
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
