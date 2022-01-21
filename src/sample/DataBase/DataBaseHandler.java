@@ -10,6 +10,13 @@ public class DataBaseHandler extends Config {
     static Connection connection;
     static List<Student> listStudent = new ArrayList<>();
 
+    public static List<Student> getListStudent() {
+        return listStudent;
+    }
+
+    public static void setListStudent(List<Student> listStudent) {
+        DataBaseHandler.listStudent = listStudent;
+    }
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName(DRIVER);
@@ -47,9 +54,9 @@ public class DataBaseHandler extends Config {
             e.printStackTrace();
         }
     }
-    public static void setQuestionAndAnswerAndBalls(String question, String answer, String ball,int id){
-        String setQuestionAndAnswerAndBallsSQL = "UPDATE " + Constant.STUDENT_TABLE + " SET question = '" + question + "' , "
-                + "answer= '" + answer + "' , " + " bonusBall= '"+ball+ "' WHERE id= "+id;
+    public static void setQuestionAndAnswerAndBalls(Student student){
+        String setQuestionAndAnswerAndBallsSQL = "UPDATE " + Constant.STUDENT_TABLE + " SET question = '" + student.getQuestion() + "' , "
+                + "answer= '" + student.getAnswer() + "' , " + " bonusBall= '"+student.getBonusBall()+ "' WHERE id= "+student.getId();
 
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(setQuestionAndAnswerAndBallsSQL);

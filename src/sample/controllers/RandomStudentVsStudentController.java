@@ -12,6 +12,8 @@ import sample.Main;
 import sample.Student;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RandomStudentVsStudentController {
@@ -47,13 +49,20 @@ public class RandomStudentVsStudentController {
 
     @FXML
     private Label studentNameQuestion;
+
+    List<Student> listStudent= new ArrayList<>();
     Student studentQuestion;
     Student studentAnswer;
 
 
     @FXML
     void initialize() {
+       listStudent.addAll(DataBaseHandler.getAllStudentsFromDB());
         backButton.setOnAction(event -> {
+            for (Student student:
+                 listStudent) {
+                DataBaseHandler.setQuestionAndAnswerAndBalls(student);
+            }
             backButton.getScene().getWindow().hide();
             try {
                 main.start(stage);
@@ -62,36 +71,37 @@ public class RandomStudentVsStudentController {
             }
         });
         startRandom.setOnAction(event -> {
-            studentQuestion = DataBaseHandler.getAllStudentsFromDB().get((int) (Math.random() * DataBaseHandler.getAllStudentsFromDB().size()));
-            studentAnswer = DataBaseHandler.getAllStudentsFromDB().get((int) (Math.random() * DataBaseHandler.getAllStudentsFromDB().size()));
+            studentQuestion = listStudent.get((int) (Math.random() * listStudent.size()));
+            studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
             firstPair();
         });
         nextRandom.setOnAction(event -> {
-            String checkGoodQuestion;
-            String checkGoodAnswer;
-            String checkBonusBallAnswer;
 
             if (goodQuestionCheck.isSelected()) {
-                checkGoodQuestion = "1";
+                studentQuestion.setQuestion("1");
                 goodQuestionCheck.fire();
-            } else
-                checkGoodQuestion = "0";
+            }else studentQuestion.setQuestion("0");
 
             if (goodAnswerCheck.isSelected()) {
-                checkGoodAnswer = "1";
+                studentAnswer.setAnswer("1");
                 goodAnswerCheck.fire();
-            } else
-                checkGoodAnswer = "0";
+            }else studentAnswer.setAnswer("0");
 
             if (bonusBallCheckAnswer.isSelected()) {
-                checkBonusBallAnswer = "1";
+                studentAnswer.setBonusBall("1");
                 bonusBallCheckAnswer.fire();
-            } else
-                checkBonusBallAnswer = "0";
+            } studentAnswer.setBonusBall("0");
 
 
-            DataBaseHandler.setQuestionAndAnswerAndBalls(checkGoodQuestion, studentQuestion.getAnswer(), studentQuestion.getBonusBall(), studentQuestion.getId());
-            DataBaseHandler.setQuestionAndAnswerAndBalls(studentAnswer.getQuestion(), checkGoodAnswer, checkBonusBallAnswer, studentAnswer.getId());
+            for (Student student:
+                 listStudent) {
+                if(student.getId()==studentQuestion.getId()){
+                    student=studentQuestion;
+                }
+                if(student.getId()==studentAnswer.getId()){
+                    student=studentAnswer;
+                }
+            }
 
             nextPair();
 
@@ -104,12 +114,12 @@ public class RandomStudentVsStudentController {
     private void nextPair() {
         if (studentAnswer.getQuestion().equals("x")) {
             studentQuestion = studentAnswer;
-            studentAnswer = DataBaseHandler.getAllStudentsFromDB().get((int) (Math.random() * DataBaseHandler.getAllStudentsFromDB().size()));
+            studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
             if (studentAnswer.getAnswer().equals("x"))
                 studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
             else
                 while (!studentAnswer.getAnswer().equals("x")) {
-                    studentAnswer = DataBaseHandler.getAllStudentsFromDB().get((int) (Math.random() * DataBaseHandler.getAllStudentsFromDB().size()));
+                    studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
                 }
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
 
@@ -123,13 +133,13 @@ public class RandomStudentVsStudentController {
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
         } else {
             while (!studentQuestion.getQuestion().equals("x"))
-                studentQuestion = DataBaseHandler.getAllStudentsFromDB().get((int) (Math.random() * DataBaseHandler.getAllStudentsFromDB().size()));
+                studentQuestion = listStudent.get((int) (Math.random() * listStudent.size()));
         }
         if (studentAnswer.getAnswer().equals("x") && !studentAnswer.equals(studentQuestion)) {
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
         } else {
             while (!studentAnswer.getAnswer().equals("x"))
-                studentAnswer = DataBaseHandler.getAllStudentsFromDB().get((int) (Math.random() * DataBaseHandler.getAllStudentsFromDB().size()));
+                studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
         }
     }
 
