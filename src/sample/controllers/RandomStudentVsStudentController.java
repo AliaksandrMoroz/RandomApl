@@ -101,9 +101,18 @@ public class RandomStudentVsStudentController {
 
             if (bonusBallCheckAnswer.isSelected()) {
                 studentAnswer.setBonusBall("1");
-                bonusBallCheckAnswer.fire();
+                bonusBallCheckAnswer.fire();}
+
+
+            for (Student student:
+                 listStudent) {
+                if(student.getId()==studentAnswer.getId()){
+                    student=studentAnswer;
+                }
+                if (student.getId()==studentQuestion.getId()){
+                    student=studentQuestion;
+                }
             }
-            studentAnswer.setBonusBall("0");
 
 
             updateLists();
