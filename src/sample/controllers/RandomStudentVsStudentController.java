@@ -13,6 +13,7 @@ import sample.Student;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,17 +51,28 @@ public class RandomStudentVsStudentController {
     @FXML
     private Label studentNameQuestion;
 
-    List<Student> listStudent= new ArrayList<>();
+    List<Student> listStudent = new ArrayList<>();
+    List<Student> listStudentQuestion = new ArrayList<>();
+    List<Student> listStudentAnswer = new ArrayList<>();
     Student studentQuestion;
     Student studentAnswer;
 
 
     @FXML
     void initialize() {
-       listStudent.addAll(DataBaseHandler.getAllStudentsFromDB());
+        listStudent.addAll(DataBaseHandler.getAllStudentsFromDB());
+        for (Student student :
+                listStudent) {
+            if (student.getAnswer().equals("x")) {
+                listStudentAnswer.add(student);
+            }
+            if (student.getQuestion().equals("x")) {
+                listStudentQuestion.add(student);
+            }
+        }
         backButton.setOnAction(event -> {
-            for (Student student:
-                 listStudent) {
+            for (Student student :
+                    listStudent) {
                 DataBaseHandler.setQuestionAndAnswerAndBalls(student);
             }
             backButton.getScene().getWindow().hide();
@@ -71,8 +83,8 @@ public class RandomStudentVsStudentController {
             }
         });
         startRandom.setOnAction(event -> {
-            studentQuestion = listStudent.get((int) (Math.random() * listStudent.size()));
-            studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
+            studentQuestion = listStudentQuestion.get((int) (Math.random() * listStudentQuestion.size()));
+            studentAnswer = listStudentAnswer.get((int) (Math.random() * listStudentAnswer.size()));
             firstPair();
         });
         nextRandom.setOnAction(event -> {
@@ -80,50 +92,70 @@ public class RandomStudentVsStudentController {
             if (goodQuestionCheck.isSelected()) {
                 studentQuestion.setQuestion("1");
                 goodQuestionCheck.fire();
-            }else studentQuestion.setQuestion("0");
+            } else studentQuestion.setQuestion("0");
 
             if (goodAnswerCheck.isSelected()) {
                 studentAnswer.setAnswer("1");
                 goodAnswerCheck.fire();
-            }else studentAnswer.setAnswer("0");
+            } else studentAnswer.setAnswer("0");
 
             if (bonusBallCheckAnswer.isSelected()) {
                 studentAnswer.setBonusBall("1");
                 bonusBallCheckAnswer.fire();
-            } studentAnswer.setBonusBall("0");
+            }
+            studentAnswer.setBonusBall("0");
 
-
-            for (Student student:
-                 listStudent) {
-                if(student.getId()==studentQuestion.getId()){
-                    student=studentQuestion;
+            for (int i = 0; i < listStudentQuestion.size(); i++) {
+                if (!listStudentQuestion.get(i).getQuestion().equals("x")) {
+                    listStudentQuestion.remove(i);
+                    i--;
                 }
-                if(student.getId()==studentAnswer.getId()){
-                    student=studentAnswer;
+            }
+            for (int i = 0; i < listStudentAnswer.size(); i++) {
+                if (!listStudentAnswer.get(i).getAnswer().equals("x")) {
+                    listStudentAnswer.remove(i);
+                    i--;
+                }
+
+            }
+
+
+            for (Student student :
+                    listStudent) {
+                if (student.getId() == studentQuestion.getId()) {
+                    student = studentQuestion;
+                }
+                if (student.getId() == studentAnswer.getId()) {
+                    student = studentAnswer;
                 }
             }
 
             nextPair();
-
+            studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
+            studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
 
         });
 
 
-}
+    }
 
     private void nextPair() {
         if (studentAnswer.getQuestion().equals("x")) {
             studentQuestion = studentAnswer;
-            studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
+            studentAnswer = listStudentAnswer.get((int) (Math.random() * listStudentAnswer.size()));
             if (studentAnswer.getAnswer().equals("x"))
                 studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-            else
-                while (!studentAnswer.getAnswer().equals("x")) {
-                    studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
+            else {
+                for (Student student :
+                        listStudentAnswer) {
+                    if (student.getAnswer().equals("x")&&!(student.getId() ==studentQuestion.getId())) {
+                        studentAnswer = student;
+                    }
                 }
+            }
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
 
-        }else firstPair();
+        } else firstPair();
         studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
     }
 
@@ -132,15 +164,23 @@ public class RandomStudentVsStudentController {
         if (studentQuestion.getQuestion().equals("x") && !studentQuestion.equals(studentAnswer)) {
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
         } else {
-            while (!studentQuestion.getQuestion().equals("x"))
-                studentQuestion = listStudent.get((int) (Math.random() * listStudent.size()));
+            for (Student student :
+                    listStudentQuestion) {
+                if (student.getQuestion().equals("x")&&!(student.getId() ==studentAnswer.getId())) {
+                    studentQuestion = student;
+                }
+            }
         }
         if (studentAnswer.getAnswer().equals("x") && !studentAnswer.equals(studentQuestion)) {
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
         } else {
-            while (!studentAnswer.getAnswer().equals("x"))
-                studentAnswer = listStudent.get((int) (Math.random() * listStudent.size()));
+            for (Student student :
+                    listStudentAnswer) {
+                if (student.getAnswer().equals("x")&& !(student.getId() ==studentQuestion.getId())) {
+                    studentAnswer = student;
+                }
+            }
         }
-    }
 
+    }
 }
