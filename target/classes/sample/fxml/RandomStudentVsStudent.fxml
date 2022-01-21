@@ -50,6 +50,11 @@
                </font>
             </Label>
             <CheckBox fx:id="bonusBallCheckAnswer" layoutX="386.0" layoutY="343.0" mnemonicParsing="false" text="Доп. балл" />
+            <Label fx:id="errorTEXT" alignment="CENTER" layoutX="71.0" layoutY="386.0" prefHeight="5.0" prefWidth="508.0" textAlignment="RIGHT" textFill="#da3e3e" wrapText="true">
+               <font>
+                  <Font name="New Peninim MT" size="30.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="RANDOMAZER" textAlignment="RIGHT" textFill="#da3e3e" wrapText="true">

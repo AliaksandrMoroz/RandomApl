@@ -13,9 +13,9 @@ import sample.Student;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class RandomStudentVsStudentController {
     Main main = new Main();
@@ -29,6 +29,9 @@ public class RandomStudentVsStudentController {
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private Label errorTEXT;
 
     @FXML
     private CheckBox bonusBallCheckAnswer;
@@ -61,15 +64,9 @@ public class RandomStudentVsStudentController {
     @FXML
     void initialize() {
         listStudent.addAll(DataBaseHandler.getAllStudentsFromDB());
-        for (Student student :
-                listStudent) {
-            if (student.getAnswer().equals("x")) {
-                listStudentAnswer.add(student);
-            }
-            if (student.getQuestion().equals("x")) {
-                listStudentQuestion.add(student);
-            }
-        }
+
+        updateLists();
+
         backButton.setOnAction(event -> {
             for (Student student :
                     listStudent) {
@@ -82,11 +79,14 @@ public class RandomStudentVsStudentController {
                 exception.printStackTrace();
             }
         });
+
         startRandom.setOnAction(event -> {
+            updateLists();
             studentQuestion = listStudentQuestion.get((int) (Math.random() * listStudentQuestion.size()));
             studentAnswer = listStudentAnswer.get((int) (Math.random() * listStudentAnswer.size()));
             firstPair();
         });
+
         nextRandom.setOnAction(event -> {
 
             if (goodQuestionCheck.isSelected()) {
@@ -105,30 +105,9 @@ public class RandomStudentVsStudentController {
             }
             studentAnswer.setBonusBall("0");
 
-            for (int i = 0; i < listStudentQuestion.size(); i++) {
-                if (!listStudentQuestion.get(i).getQuestion().equals("x")) {
-                    listStudentQuestion.remove(i);
-                    i--;
-                }
-            }
-            for (int i = 0; i < listStudentAnswer.size(); i++) {
-                if (!listStudentAnswer.get(i).getAnswer().equals("x")) {
-                    listStudentAnswer.remove(i);
-                    i--;
-                }
 
-            }
+            updateLists();
 
-
-            for (Student student :
-                    listStudent) {
-                if (student.getId() == studentQuestion.getId()) {
-                    student = studentQuestion;
-                }
-                if (student.getId() == studentAnswer.getId()) {
-                    student = studentAnswer;
-                }
-            }
 
             nextPair();
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
@@ -139,48 +118,37 @@ public class RandomStudentVsStudentController {
 
     }
 
-    private void nextPair() {
-        if (studentAnswer.getQuestion().equals("x")) {
-            studentQuestion = studentAnswer;
-            studentAnswer = listStudentAnswer.get((int) (Math.random() * listStudentAnswer.size()));
-            if (studentAnswer.getAnswer().equals("x"))
-                studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-            else {
-                for (Student student :
-                        listStudentAnswer) {
-                    if (student.getAnswer().equals("x")&&!(student.getId() ==studentQuestion.getId())) {
-                        studentAnswer = student;
-                    }
-                }
-            }
-            studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-
-        } else firstPair();
-        studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
+    private void updateLists() {
+        listStudentQuestion = listStudent.stream().filter(a -> a.getQuestion().equals("x")).collect(Collectors.toList());
+        listStudentAnswer = listStudent.stream().filter(a -> a.getAnswer().equals("x")).collect(Collectors.toList());
     }
 
+    private void nextPair() {
+        updateLists();
+        if (listStudentAnswer.size() <=1 && listStudentQuestion.size() <=1) {
+            errorTEXT.setText("Студент не найден.");
+        } else {
+            if (studentAnswer.getQuestion().equals("x")) {
+                studentQuestion = studentAnswer;
+                studentAnswer = listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList())
+                        .get((int) (Math.random() * listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList()).size()));
+                studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
+            }
+        }
+    }
 
     private void firstPair() {
-        if (studentQuestion.getQuestion().equals("x") && !studentQuestion.equals(studentAnswer)) {
-            studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
+        updateLists();
+        if (listStudentAnswer.size() <= 1 && listStudentQuestion.size() <=1) {
+            errorTEXT.setText("Студент не найден.");
         } else {
-            for (Student student :
-                    listStudentQuestion) {
-                if (student.getQuestion().equals("x")&&!(student.getId() ==studentAnswer.getId())) {
-                    studentQuestion = student;
-                }
-            }
-        }
-        if (studentAnswer.getAnswer().equals("x") && !studentAnswer.equals(studentQuestion)) {
-            studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-        } else {
-            for (Student student :
-                    listStudentAnswer) {
-                if (student.getAnswer().equals("x")&& !(student.getId() ==studentQuestion.getId())) {
-                    studentAnswer = student;
-                }
-            }
-        }
 
+            studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
+
+            studentAnswer = listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList())
+                    .get((int) (Math.random() * listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList()).size()));
+
+            studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
+        }
     }
 }
