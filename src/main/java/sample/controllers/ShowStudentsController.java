@@ -1,8 +1,5 @@
 package sample.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +11,9 @@ import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
 import sample.Student;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ShowStudentsController {
     Main main = new Main();

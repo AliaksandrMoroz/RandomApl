@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
-import sample.Student;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,7 +51,7 @@ public class SetStudentController {
         addStudentButton.setOnAction(event -> {
             String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
             String[] newStudent= newStudentText.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if(!addText.equals("")&&DataBaseHandler.getAllStudentsFromDB().stream()
+            if(!addText.equals("")&& DataBaseHandler.getAllStudentsFromDB().stream()
                     .anyMatch(student ->
                             (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))){
                 DataBaseHandler.setStudentFromDB(addText[0], addText[1],newStudent[0],newStudent[1]);

@@ -38,15 +38,15 @@ public class MainController {
     @FXML
     void initialize() {
 
-        clickButton(addStudentButton, "/sample/fxml/AddStudentMenu.fxml");
+        clickButton(addStudentButton, "/fxml/AddStudentMenu.fxml");
 
-        clickButton(deleteStudentButton, "/sample/fxml/DeleteStudent.fxml");
+        clickButton(deleteStudentButton, "/fxml/DeleteStudent.fxml");
 
-        clickButton(setStudentButton, "/sample/fxml/SetStudent.fxml");
+        clickButton(setStudentButton, "/fxml/SetStudent.fxml");
 
-        clickButton(showStudentButton, "/sample/fxml/ShowStudents.fxml");
+        clickButton(showStudentButton, "/fxml/ShowStudents.fxml");
 
-        clickButton(randomStudentVsStudentButton, "/sample/fxml/RandomStudentVsStudent.fxml");
+        clickButton(randomStudentVsStudentButton, "/fxml/RandomStudentVsStudent.fxml");
 
 
     }

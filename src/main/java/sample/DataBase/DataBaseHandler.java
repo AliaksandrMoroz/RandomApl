@@ -1,5 +1,6 @@
 package sample.DataBase;
 
+
 import sample.Student;
 
 import java.sql.*;
@@ -29,9 +30,7 @@ public class DataBaseHandler extends Config {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(delete);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -61,9 +60,7 @@ public class DataBaseHandler extends Config {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(setQuestionAndAnswerAndBallsSQL);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -75,9 +72,7 @@ public class DataBaseHandler extends Config {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(set);
             preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
