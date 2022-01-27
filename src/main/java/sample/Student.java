@@ -1,6 +1,8 @@
 package sample;
 
 
+import java.util.Objects;
+
 public class Student {
     private int id;
     private String name;
@@ -20,11 +22,11 @@ public class Student {
         Student student = (Student) o;
 
         if (id != student.id) return false;
-        if (name != null ? !name.equals(student.name) : student.name != null) return false;
-        if (lastname != null ? !lastname.equals(student.lastname) : student.lastname != null) return false;
-        if (question != null ? !question.equals(student.question) : student.question != null) return false;
-        if (answer != null ? !answer.equals(student.answer) : student.answer != null) return false;
-        return bonusBall != null ? bonusBall.equals(student.bonusBall) : student.bonusBall == null;
+        if (!Objects.equals(name, student.name)) return false;
+        if (!Objects.equals(lastname, student.lastname)) return false;
+        if (!Objects.equals(question, student.question)) return false;
+        if (!Objects.equals(answer, student.answer)) return false;
+        return Objects.equals(bonusBall, student.bonusBall);
     }
 
     @Override

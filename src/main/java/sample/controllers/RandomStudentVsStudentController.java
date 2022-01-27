@@ -1,5 +1,3 @@
-
-
 package sample.controllers;
 
 import javafx.fxml.FXML;
@@ -60,13 +58,10 @@ public class RandomStudentVsStudentController {
     Student studentQuestion;
     Student studentAnswer;
 
-
     @FXML
     void initialize() {
         listStudent.addAll(DataBaseHandler.getAllStudentsFromDB());
-
         updateLists();
-
         backButton.setOnAction(event -> {
             for (Student student :
                     listStudent) {
@@ -88,7 +83,6 @@ public class RandomStudentVsStudentController {
         });
 
         nextRandom.setOnAction(event -> {
-
             if (goodQuestionCheck.isSelected()) {
                 studentQuestion.setQuestion("1");
                 goodQuestionCheck.fire();
@@ -104,7 +98,6 @@ public class RandomStudentVsStudentController {
                 bonusBallCheckAnswer.fire();
             }
 
-
             for (Student student :
                     listStudent) {
                 if (student.getId() == studentAnswer.getId()) {
@@ -114,18 +107,11 @@ public class RandomStudentVsStudentController {
                     student = studentQuestion;
                 }
             }
-
-
             updateLists();
-
-
             nextPair();
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
-
         });
-
-
     }
 
     private void updateLists() {
@@ -137,12 +123,16 @@ public class RandomStudentVsStudentController {
         updateLists();
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("Студент не найден.");
-
         } else {
             if (studentAnswer.getQuestion().equals("x")) {
                 studentQuestion = studentAnswer;
-                studentAnswer = listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList())
-                        .get((int) (Math.random() * listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList()).size()));
+                studentAnswer = listStudentAnswer.stream()
+                        .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
+                        .collect(Collectors.toList())
+                        .get((int) (Math.random() * listStudentAnswer.stream()
+                                .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
+                                .collect(Collectors.toList())
+                                .size()));
                 studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
             }
         }
@@ -152,14 +142,15 @@ public class RandomStudentVsStudentController {
         updateLists();
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("Студент не найден.");
-
         } else {
-
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
-
-            studentAnswer = listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList())
-                    .get((int) (Math.random() * listStudentAnswer.stream().filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x"))).collect(Collectors.toList()).size()));
-
+            studentAnswer = listStudentAnswer.stream()
+                    .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
+                    .collect(Collectors.toList())
+                    .get((int) (Math.random() * listStudentAnswer.stream()
+                            .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
+                            .collect(Collectors.toList())
+                            .size()));
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
         }
     }

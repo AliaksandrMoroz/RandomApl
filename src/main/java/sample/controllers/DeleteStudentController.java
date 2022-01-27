@@ -2,6 +2,7 @@ package sample.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +14,6 @@ import sample.Main;
 public class DeleteStudentController {
     Main main = new Main();
     Stage stage = new Stage();
-
 
     @FXML
     private ResourceBundle resources;
@@ -33,7 +33,6 @@ public class DeleteStudentController {
     @FXML
     private Label errorText;
 
-
     @FXML
     void initialize() {
         backButton.setOnAction(event -> {
@@ -46,16 +45,14 @@ public class DeleteStudentController {
         });
         deleteStudentButton.setOnAction(event -> {
             String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if(!addText.equals("")&& DataBaseHandler.getAllStudentsFromDB().stream()
+            if (!addText.equals("") && DataBaseHandler.getAllStudentsFromDB().stream()
                     .anyMatch(student ->
-                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))){
-                DataBaseHandler.deleteStudentFromDB(addText[0],addText[1]);
+                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
+                DataBaseHandler.deleteStudentFromDB(addText[0], addText[1]);
                 errorText.setText(addText[0] + " " + addText[1] + " успешно удален!");
                 enterNameLastnameField.setText("");
-            }else
-            errorText.setText("Ошибка ввода данных!");
+            } else
+                errorText.setText("Ошибка ввода данных!");
         });
-
     }
-
 }

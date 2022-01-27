@@ -51,9 +51,6 @@ public class ShowStudentsController {
 
     ObservableList<Student> observableList = FXCollections.observableList(DataBaseHandler.getAllStudentsFromDB());
 
-
-    private
-
     @FXML
     void initialize() {
         backButton.setOnAction(event -> {
@@ -65,16 +62,13 @@ public class ShowStudentsController {
                 exception.printStackTrace();
             }
         });
-        collumId.setCellValueFactory(new PropertyValueFactory<Student,Integer>("id"));
-        collumName.setCellValueFactory(new PropertyValueFactory<Student,String>("name"));
-        collumLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("lastname"));
-        collumQuestion.setCellValueFactory(new PropertyValueFactory<Student,String>("question"));
-        collumAnswer.setCellValueFactory(new PropertyValueFactory<Student,String>("answer"));
-        collumBonus.setCellValueFactory(new PropertyValueFactory<Student,String>("bonusBall"));
+        collumId.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
+        collumName.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
+        collumLastName.setCellValueFactory(new PropertyValueFactory<Student, String>("lastname"));
+        collumQuestion.setCellValueFactory(new PropertyValueFactory<Student, String>("question"));
+        collumAnswer.setCellValueFactory(new PropertyValueFactory<Student, String>("answer"));
+        collumBonus.setCellValueFactory(new PropertyValueFactory<Student, String>("bonusBall"));
 
         table.setItems(observableList);
-
-
     }
-
 }

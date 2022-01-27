@@ -15,7 +15,6 @@ public class SetStudentController {
     Main main = new Main();
     Stage stage = new Stage();
 
-
     @FXML
     private ResourceBundle resources;
 
@@ -50,19 +49,17 @@ public class SetStudentController {
 
         addStudentButton.setOnAction(event -> {
             String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            String[] newStudent= newStudentText.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if(!addText.equals("")&& DataBaseHandler.getAllStudentsFromDB().stream()
+            String[] newStudent = newStudentText.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
+            if (!addText.equals("") && DataBaseHandler.getAllStudentsFromDB().stream()
                     .anyMatch(student ->
-                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))){
-                DataBaseHandler.setStudentFromDB(addText[0], addText[1],newStudent[0],newStudent[1]);
+                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
+                DataBaseHandler.setStudentFromDB(addText[0], addText[1], newStudent[0], newStudent[1]);
                 errorText.setText(addText[0] + " " + addText[1] + " успешно изменен!");
                 enterNameLastnameField.setText("");
                 newStudentText.setText("");
-
-            }else {
+            } else {
                 errorText.setText("Ошибка ввода данных!");
             }
         });
     }
-
 }

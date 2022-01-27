@@ -48,15 +48,13 @@ public class AddStudentController {
 
         addStudentButton.setOnAction(event -> {
             String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if(!addText.equals("")){
+            if (!addText.equals("")) {
                 DataBaseHandler.addStudentFromDB(addText[0], addText[1]);
                 errorText.setText(addText[0] + " " + addText[1] + " успешно добавлен!");
                 enterNameLastnameField.setText("");
-            }else {
+            } else {
                 errorText.setText("Ошибка ввода данных!");
             }
         });
-
     }
-
 }
