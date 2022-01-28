@@ -18,6 +18,21 @@
                         <Font size="31.0"/>
                     </font>
                 </Button>
+
+                <Button fx:id="clearMarksButton" layoutX="200.0" layoutY="503.0" mnemonicParsing="false"
+                        prefHeight="50.0" prefWidth="300.0" text="ClearMarks">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Button>
+
+                <Label fx:id="successText" layoutX="150.0" layoutY="200.0" prefHeight="33.0" prefWidth="495.0"
+                       textAlignment="RIGHT" textFill="#da3e3e" wrapText="true">
+                    <font>
+                        <Font name="New Peninim MT" size="32.0"/>
+                    </font>
+                </Label>
+
                 <Button fx:id="randomStudentVsStudentButton" layoutX="84.0" layoutY="33.0" mnemonicParsing="false"
                         prefHeight="55.0" prefWidth="532.0" text="Random student vs student">
                     <font>

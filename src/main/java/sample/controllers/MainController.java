@@ -9,7 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import sample.DataBase.DataBaseHandler;
 
 public class MainController {
     Stage stage = new Stage();
@@ -36,6 +38,12 @@ public class MainController {
     private Button showStudentButton;
 
     @FXML
+    private Button clearMarksButton;
+
+    @FXML
+    private Label successText;
+
+    @FXML
     void initialize() {
 
         clickButton(addStudentButton, "/fxml/AddStudentMenu.fxml");
@@ -47,6 +55,12 @@ public class MainController {
         clickButton(showStudentButton, "/fxml/ShowStudents.fxml");
 
         clickButton(randomStudentVsStudentButton, "/fxml/RandomStudentVsStudent.fxml");
+
+        clearMarksButton.setOnAction((event) -> {
+            DataBaseHandler.clearMarks();
+            successText.setText(" Оценки успешно сброшены");
+        });
+
     }
 
     private void clickButton(Button addStudentButton, String s) {

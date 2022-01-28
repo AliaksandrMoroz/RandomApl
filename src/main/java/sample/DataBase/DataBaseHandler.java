@@ -85,4 +85,17 @@ public class DataBaseHandler extends Config {
         }
         return listStudent;
     }
+
+
+    public static void clearMarks() {
+        String clearMarksSQL = "UPDATE student SET question = 'x' , answer= 'x' ,  bonusBall= 'x'";
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(clearMarksSQL);
+            preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException | SQLException var2) {
+            var2.printStackTrace();
+        }
+
+    }
 }
