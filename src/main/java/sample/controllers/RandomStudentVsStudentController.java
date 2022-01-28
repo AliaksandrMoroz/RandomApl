@@ -124,7 +124,7 @@ public class RandomStudentVsStudentController {
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
             errorTEXT.setText("There is no more students left.");
         } else {
-            if (studentAnswer.getQuestion().equals("x")) {
+            if (studentAnswer.getQuestion().equals("x") ) {
                 studentQuestion = studentAnswer;
                 studentAnswer = listStudentAnswer.stream()
                         .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
@@ -133,7 +133,9 @@ public class RandomStudentVsStudentController {
                                 .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
                                 .collect(Collectors.toList())
                                 .size()));
-                studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
+                if (!studentAnswer.getTeam().equals(studentQuestion.getTeam())) {
+                    studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
+                } else nextPair();
             }
         }
     }
@@ -151,7 +153,9 @@ public class RandomStudentVsStudentController {
                             .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
                             .collect(Collectors.toList())
                             .size()));
+            if (studentAnswer.getQuestion().equals("x") && (!studentAnswer.getTeam().equals(studentQuestion.getTeam()))) {
             studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
+            } else  firstPair();
         }
     }
 }

@@ -27,6 +27,7 @@ public class Student {
         if (!Objects.equals(lastname, student.lastname)) return false;
         if (!Objects.equals(question, student.question)) return false;
         if (!Objects.equals(answer, student.answer)) return false;
+        if (!Objects.equals(team, student.team)) return false;
         return Objects.equals(bonusBall, student.bonusBall);
     }
 
