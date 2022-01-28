@@ -104,7 +104,7 @@
                     <user>root</user>
                     <password>root</password>
                     <baselineOnMigrate>true</baselineOnMigrate>
-                    <schemas>sys</schemas>
+                    <schemas>flyway</schemas>
                     <locations>
                         <location>
                             filesystem:src/main/resources/db/migration

@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS student(
                         question varchar(45) NOT NULL,
                         answer varchar(45) NOT NULL,
                         bonusBall varchar(45) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
