@@ -72,7 +72,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="RIGHT"
+        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="CENTER"
                textFill="#da3e3e" wrapText="true">
             <font>
                 <Font name="New Peninim MT" size="64.0"/>

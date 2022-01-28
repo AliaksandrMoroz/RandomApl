@@ -26,17 +26,18 @@ public class DataBaseHandler extends Config {
         }
     }
 
-    public static void addStudentFromDB(String lastname, String name) {
-        String insert = "INSERT INTO " + Constant.STUDENT_TABLE + " (" + Constant.LASTNAME + "," + Constant.NAME + ","
+    public static void addStudentFromDB(String lastname, String name, String team) {
+        String insert = "INSERT INTO " + Constant.STUDENT_TABLE + " (" + Constant.LASTNAME + "," + Constant.NAME + "," + Constant.TEAM + ","
                 + Constant.QUESTION + "," + Constant.ANSWER + "," + Constant.BONUS_BALL + ")" +
-                " VALUES(?,?,?,?,?)";
+                " VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(insert);
             preparedStatement.setString(1, lastname);
             preparedStatement.setString(2, name);
-            preparedStatement.setString(3, "x");
+            preparedStatement.setString(3, team);
             preparedStatement.setString(4, "x");
             preparedStatement.setString(5, "x");
+            preparedStatement.setString(6, "x");
             preparedStatement.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -54,9 +55,9 @@ public class DataBaseHandler extends Config {
         }
     }
 
-    public static void setStudentFromDB(String lastname, String name, String newLastName, String newName) {
+    public static void setStudentFromDB(String lastname, String name,  String newLastName, String newName, String newTeam) {
         String set = "UPDATE " + Constant.STUDENT_TABLE + " SET lastname = '" + newLastName + "' , " + "name= '"
-                + newName + "' WHERE lastname= '" + lastname + "' and name= '" + name + "'";
+                + newName +"' , team= '"+ newTeam + "' WHERE lastname= '" + lastname + "' and name= '" + name + "' ";
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(set);
             preparedStatement.executeUpdate();
@@ -75,9 +76,11 @@ public class DataBaseHandler extends Config {
                 listStudent.add(new Student(resultSet.getInt(Constant.STUDENT_ID),
                         resultSet.getString(Constant.NAME),
                         resultSet.getString(Constant.LASTNAME),
+                        resultSet.getString(Constant.TEAM),
                         resultSet.getString(Constant.QUESTION),
                         resultSet.getString(Constant.ANSWER),
                         resultSet.getString(Constant.BONUS_BALL)
+
                 ));
             }
         } catch (SQLException | ClassNotFoundException e) {

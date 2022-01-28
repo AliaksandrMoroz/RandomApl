@@ -10,6 +10,7 @@ public class Student {
     private String question;
     private String answer;
     private String bonusBall;
+    private String team;
 
     public Student() {
     }
@@ -40,13 +41,15 @@ public class Student {
         return result;
     }
 
-    public Student(int id, String name, String lastname, String question, String answer, String bonusBall) {
+    public Student(int id, String name, String lastname, String team, String question, String answer, String bonusBall) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
+        this.team = team;
         this.question = question;
         this.answer = answer;
         this.bonusBall = bonusBall;
+
     }
 
     public int getId() {
@@ -91,5 +94,13 @@ public class Student {
 
     public void setBonusBall(String bonusBall) {
         this.bonusBall = bonusBall;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
     }
 }

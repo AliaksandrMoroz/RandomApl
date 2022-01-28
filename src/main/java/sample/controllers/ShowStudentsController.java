@@ -38,6 +38,9 @@ public class ShowStudentsController {
     private TableColumn<Student, String> collumLastName;
 
     @FXML
+    private TableColumn<Student, String> collumTeamName;
+
+    @FXML
     private TableColumn<Student, String> collumName;
 
     @FXML
@@ -65,6 +68,7 @@ public class ShowStudentsController {
         collumId.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
         collumName.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
         collumLastName.setCellValueFactory(new PropertyValueFactory<Student, String>("lastname"));
+        collumTeamName.setCellValueFactory(new PropertyValueFactory<Student, String>("team"));
         collumQuestion.setCellValueFactory(new PropertyValueFactory<Student, String>("question"));
         collumAnswer.setCellValueFactory(new PropertyValueFactory<Student, String>("answer"));
         collumBonus.setCellValueFactory(new PropertyValueFactory<Student, String>("bonusBall"));

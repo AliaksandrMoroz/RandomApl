@@ -53,7 +53,7 @@ public class SetStudentController {
             if (!addText.equals("") && DataBaseHandler.getAllStudentsFromDB().stream()
                     .anyMatch(student ->
                             (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
-                DataBaseHandler.setStudentFromDB(addText[0], addText[1], newStudent[0], newStudent[1]);
+                DataBaseHandler.setStudentFromDB(addText[0], addText[1],  newStudent[0], newStudent[1], newStudent[2] );
                 errorText.setText(addText[0] + " " + addText[1] + " successfully changed!");
                 enterNameLastnameField.setText("");
                 newStudentText.setText("");

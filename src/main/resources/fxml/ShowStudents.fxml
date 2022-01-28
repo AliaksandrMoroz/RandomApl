@@ -26,18 +26,19 @@
                         <TableView fx:id="table" prefHeight="697.0" prefWidth="684.0">
                             <columns>
                                 <TableColumn fx:id="collumId" prefWidth="35.0" text="id"/>
-                                <TableColumn fx:id="collumLastName" prefWidth="170.0" text="Lastname"/>
-                                <TableColumn fx:id="collumName" prefWidth="170.0" text="Name"/>
-                                <TableColumn fx:id="collumQuestion" prefWidth="90.0" text="Questions"/>
-                                <TableColumn fx:id="collumAnswer" prefWidth="90.0" text="Answers"/>
-                                <TableColumn fx:id="collumBonus" prefWidth="90.0" text="Bonus mark"/>
+                                <TableColumn fx:id="collumLastName" prefWidth="160.0" text="Lastname"/>
+                                <TableColumn fx:id="collumName" prefWidth="160.0" text="Name"/>
+                                <TableColumn fx:id="collumTeamName" prefWidth="70.0" text="Team"/>
+                                <TableColumn fx:id="collumQuestion" prefWidth="80.0" text="Questions"/>
+                                <TableColumn fx:id="collumAnswer" prefWidth="80.0" text="Answers"/>
+                                <TableColumn fx:id="collumBonus" prefWidth="80.0" text="Bonus mark"/>
                             </columns>
                         </TableView>
                     </content>
                 </ScrollPane>
             </children>
         </AnchorPane>
-        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="RIGHT"
+        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="CENTER"
                textFill="#da3e3e" wrapText="true">
             <font>
                 <Font name="New Peninim MT" size="64.0"/>
