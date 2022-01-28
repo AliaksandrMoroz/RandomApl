@@ -46,7 +46,7 @@ You can delete student
 If you want to delete more students - repeat all this steps again.
 5. Press Return to move in Main Menu
 
-##Set student
+## Set student
 In this, you can change Lastname, name and team in student if you write incurred date.
 ![Set Student](screens\SetStudent.PNG)
 1. Open icon Set Student
@@ -67,12 +67,12 @@ In this table you can see all students. In column Question you can see ball of s
 If you see in this column "x" it's means that this student don't ask or answer.
 Press Return to move in Main Menu
 
-##Clear Marks
+## Clear Marks
 In this you can clean all marks in table students.
 If you press a button "ClearMarks" you can see this massage.
 ![ClearMarks](screens\ClearMarks.PNG)
 
-##Random students
+## Random students
 In this you can see main function of our application. You can have random student who ask question and who answer in this question.
 ![Random student](screens\RandomStudent.PNG)
 In this icon you can see a pole who ask and who answers. 
