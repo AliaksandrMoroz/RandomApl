@@ -58,7 +58,7 @@ public class MainController {
 
         clearMarksButton.setOnAction((event) -> {
             DataBaseHandler.clearMarks();
-            successText.setText(" Оценки успешно сброшены");
+            successText.setText(" Marks successfully cleared!");
         });
 
     }

@@ -49,10 +49,10 @@ public class DeleteStudentController {
                     .anyMatch(student ->
                             (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
                 DataBaseHandler.deleteStudentFromDB(addText[0], addText[1]);
-                errorText.setText(addText[0] + " " + addText[1] + " успешно удален!");
+                errorText.setText(addText[0] + " " + addText[1] + " successfully deleted!");
                 enterNameLastnameField.setText("");
             } else
-                errorText.setText("Ошибка ввода данных!");
+                errorText.setText("Wrong data inserted!");
         });
     }
 }

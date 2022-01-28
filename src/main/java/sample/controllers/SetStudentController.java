@@ -54,11 +54,11 @@ public class SetStudentController {
                     .anyMatch(student ->
                             (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
                 DataBaseHandler.setStudentFromDB(addText[0], addText[1], newStudent[0], newStudent[1]);
-                errorText.setText(addText[0] + " " + addText[1] + " успешно изменен!");
+                errorText.setText(addText[0] + " " + addText[1] + " successfully changed!");
                 enterNameLastnameField.setText("");
                 newStudentText.setText("");
             } else {
-                errorText.setText("Ошибка ввода данных!");
+                errorText.setText("Wrong data inserted!");
             }
         });
     }

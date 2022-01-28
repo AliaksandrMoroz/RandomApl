@@ -122,7 +122,7 @@ public class RandomStudentVsStudentController {
     private void nextPair() {
         updateLists();
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
-            errorTEXT.setText("Студент не найден.");
+            errorTEXT.setText("There is no more students left.");
         } else {
             if (studentAnswer.getQuestion().equals("x")) {
                 studentQuestion = studentAnswer;
@@ -141,7 +141,7 @@ public class RandomStudentVsStudentController {
     private void firstPair() {
         updateLists();
         if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
-            errorTEXT.setText("Студент не найден.");
+            errorTEXT.setText("There is no more students left.");
         } else {
             studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
             studentAnswer = listStudentAnswer.stream()

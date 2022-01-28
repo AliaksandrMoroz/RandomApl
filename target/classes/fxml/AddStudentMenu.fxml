@@ -14,19 +14,19 @@
                     style="-fx-background-color: #faebd7#faebd7;">
             <children>
                 <Button fx:id="addStudentButton" layoutX="202.0" layoutY="310.0" mnemonicParsing="false"
-                        prefHeight="50.0" prefWidth="300.0" text="Добавить">
+                        prefHeight="50.0" prefWidth="300.0" text="Add Student">
                     <font>
                         <Font size="31.0"/>
                     </font>
                 </Button>
                 <TextField fx:id="enterNameLastnameField" layoutX="113.0" layoutY="115.0" prefHeight="59.0"
-                           prefWidth="477.0" promptText="Фамилия Имя">
+                           prefWidth="477.0" promptText="Lastname Name">
                     <font>
                         <Font size="31.0"/>
                     </font>
                 </TextField>
                 <Button fx:id="backButton" layoutX="202.0" layoutY="518.0" mnemonicParsing="false" prefHeight="50.0"
-                        prefWidth="300.0" text="Назад">
+                        prefWidth="300.0" text="Return">
                     <font>
                         <Font size="31.0"/>
                     </font>
@@ -39,7 +39,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="RANDOMAZER" textAlignment="RIGHT"
+        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="RIGHT"
                textFill="#da3e3e" wrapText="true">
             <font>
                 <Font name="New Peninim MT" size="64.0"/>

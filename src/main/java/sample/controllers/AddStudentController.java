@@ -50,10 +50,10 @@ public class AddStudentController {
             String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
             if (!addText.equals("")) {
                 DataBaseHandler.addStudentFromDB(addText[0], addText[1]);
-                errorText.setText(addText[0] + " " + addText[1] + " успешно добавлен!");
+                errorText.setText(addText[0] + " " + addText[1] + " successfully added!");
                 enterNameLastnameField.setText("");
             } else {
-                errorText.setText("Ошибка ввода данных!");
+                errorText.setText("Wrong data inserted!");
             }
         });
     }
