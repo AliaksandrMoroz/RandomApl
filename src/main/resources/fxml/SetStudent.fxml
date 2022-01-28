@@ -10,7 +10,7 @@
             prefWidth="700.0" style="-fx-background-color: #4b0082#4b0082;" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SetStudentController">
     <children>
-        <AnchorPane layoutX="1.0" layoutY="81.0" prefHeight="619.0" prefWidth="700.0"
+        <AnchorPane layoutX="1.0" layoutY="90.0" prefHeight="619.0" prefWidth="700.0"
                     style="-fx-background-color: #faebd7#faebd7;">
             <children>
                 <Button fx:id="addStudentButton" layoutX="202.0" layoutY="431.0" mnemonicParsing="false"
@@ -45,7 +45,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="112.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="CENTER"
+        <Label layoutX="150.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="CENTER"
                textFill="#da3e3e" wrapText="true">
             <font>
                 <Font name="New Peninim MT" size="64.0"/>
