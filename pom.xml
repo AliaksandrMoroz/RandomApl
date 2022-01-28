@@ -24,11 +24,6 @@
             <version>8.4.2</version>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>2.1.210</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-archetype-fxml</artifactId>
             <version>0.0.6</version>
@@ -41,12 +36,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.0.1</version>
+            <version>17.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>17.0.0.1</version>
+            <version>17.0.2</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
@@ -57,13 +52,13 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>17.0.0.1</version>
+            <version>17.0.2</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.0.1</version>
+            <version>17.0.2</version>
         </dependency>
     </dependencies>
     <build>
@@ -102,7 +97,7 @@
                     <driver>com.mysql.cj.jdbc.Driver</driver>
                     <url>jdbc:mysql://localhost:3306/sys</url>
                     <user>root</user>
-                    <password>2019at15b</password>
+                    <password>root</password>
                     <baselineOnMigrate>true</baselineOnMigrate>
                     <schemas>flyway</schemas>
                     <locations>

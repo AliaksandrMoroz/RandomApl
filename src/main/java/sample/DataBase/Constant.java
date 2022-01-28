@@ -9,5 +9,4 @@ public class Constant {
     public static final String QUESTION = "question";
     public static final String ANSWER = "answer";
     public static final String BONUS_BALL = "bonusBall";
-
 }

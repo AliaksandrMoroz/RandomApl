@@ -1,6 +1,5 @@
 package sample;
 
-
 import java.util.Objects;
 
 public class Student {
@@ -50,7 +49,6 @@ public class Student {
         this.question = question;
         this.answer = answer;
         this.bonusBall = bonusBall;
-
     }
 
     public int getId() {

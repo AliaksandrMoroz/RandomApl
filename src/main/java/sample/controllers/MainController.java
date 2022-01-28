@@ -45,7 +45,6 @@ public class MainController {
 
     @FXML
     void initialize() {
-
         clickButton(addStudentButton, "/fxml/AddStudentMenu.fxml");
 
         clickButton(deleteStudentButton, "/fxml/DeleteStudent.fxml");
@@ -60,7 +59,6 @@ public class MainController {
             DataBaseHandler.clearMarks();
             successText.setText(" Marks successfully cleared!");
         });
-
     }
 
     private void clickButton(Button addStudentButton, String s) {

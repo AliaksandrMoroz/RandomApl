@@ -11,11 +11,9 @@ import sample.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 public class AddStudentController {
     Main main = new Main();
     Stage stage = new Stage();
-
 
     @FXML
     private ResourceBundle resources;

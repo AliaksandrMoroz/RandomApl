@@ -99,6 +99,5 @@ public class DataBaseHandler extends Config {
         } catch (ClassNotFoundException | SQLException var2) {
             var2.printStackTrace();
         }
-
     }
 }
