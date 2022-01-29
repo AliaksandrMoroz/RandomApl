@@ -31,7 +31,7 @@
                         <Font size="31.0"/>
                     </font>
                 </Button>
-                <Label fx:id="errorText" layoutX="113.0" layoutY="205.0" prefHeight="33.0" prefWidth="495.0"
+                <Label fx:id="errorText" layoutX="10.0" layoutY="205.0" prefHeight="33.0" prefWidth="680.0"
                        textAlignment="RIGHT" textFill="#da3e3e" wrapText="true">
                     <font>
                         <Font name="New Peninim MT" size="32.0"/>
