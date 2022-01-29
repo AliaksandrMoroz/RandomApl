@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
-import sample.Student;
+import sample.entity.Student;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -131,8 +131,10 @@ public class RandomStudentVsStudentController {
                         .collect(Collectors.toList())
                         .get((int) (Math.random() * listStudentAnswer.stream()
                                 .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
-                                .collect(Collectors.toList())
-                                .size()));
+                                //TODO Заменить следующие две строчки одной
+//                                .collect(Collectors.toList())
+//                                .size()));
+                                .count()));
                 if (!studentAnswer.getTeam().equals(studentQuestion.getTeam())) {
                     studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
                 } else nextPair();
@@ -151,8 +153,10 @@ public class RandomStudentVsStudentController {
                     .collect(Collectors.toList())
                     .get((int) (Math.random() * listStudentAnswer.stream()
                             .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
-                            .collect(Collectors.toList())
-                            .size()));
+                            //TODO Заменить следующие две строчки одной
+//                            .collect(Collectors.toList())
+//                            .size()));
+                            .count()));
             if (studentAnswer.getQuestion().equals("x") && (!studentAnswer.getTeam().equals(studentQuestion.getTeam()))) {
                 studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
             } else firstPair();

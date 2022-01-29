@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
+import sample.service.AddStudentService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 public class AddStudentController {
     Main main = new Main();
     Stage stage = new Stage();
+    AddStudentService addStudentService;
 
     @FXML
     private ResourceBundle resources;
@@ -43,16 +45,18 @@ public class AddStudentController {
                 exception.printStackTrace();
             }
         });
-
-        addStudentButton.setOnAction(event -> {
-            String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if (!addText.equals("")) {
-                DataBaseHandler.addStudentFromDB(addText[0], addText[1], addText[2]);
-                errorText.setText(addText[0] + " " + addText[1] + " team № " + addText[2] + "successfully added!");
-                enterNameLastnameField.setText("");
-            } else {
-                errorText.setText("Wrong data inserted!");
-            }
-        });
+        addStudentButton.setOnAction(event -> addStudentService.add(enterNameLastnameField, errorText));
+//
+//        addStudentButton.setOnAction(event -> {
+//
+//            String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
+//            if (!addText.equals("")) {
+//                DataBaseHandler.addStudentFromDB(addText[0], addText[1], addText[2]);
+//                errorText.setText(addText[0] + " " + addText[1] + " team № " + addText[2] + "successfully added!");
+//                enterNameLastnameField.setText("");
+//            } else {
+//                errorText.setText("Wrong data inserted!");
+//            }
+//        });
     }
 }

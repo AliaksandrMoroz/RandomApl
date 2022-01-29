@@ -10,7 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
-import sample.Student;
+import sample.entity.Student;
 
 import java.net.URL;
 import java.util.ResourceBundle;

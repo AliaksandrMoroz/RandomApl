@@ -1,6 +1,6 @@
 package sample.DataBase;
 
-import sample.Student;
+import sample.entity.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
