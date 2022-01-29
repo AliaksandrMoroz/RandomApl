@@ -1,6 +1,6 @@
 # Random application
 ## Introduction
-This application was developed by Alexandr Moroz, Vasily Shelkov, Viktor Sazhin and Yaroslav Detsky.
+This application was developed by Alexandr Moroz, Vasily Sholkov, Viktor Sazhin and Yaroslav Detsky.
 Random application is a program with which you can add participants to the list, generate and receive random questioners and responders, set scores and display a general list.
 
 ## Stack
