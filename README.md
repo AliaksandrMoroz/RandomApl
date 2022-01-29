@@ -29,11 +29,14 @@ In this project we use:
 mvn clean install javafx:run
 ```
 You will see this window if you do all these steps correctly.
+
 ![Main Menu](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/MainMenu.PNG)
 
 ## Add students
 You can add student in this pole. You should set Lastname, Name and number of team.
+
 ![Add student](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/AddStudent.PNG)
+
 1. Open icon Add student
 2. Choose pole
 3. Write in this pole Lastname, name and team of student
@@ -44,7 +47,9 @@ If you want to add more students - repeat all this steps again.
 
 ## Delete Student
 You can delete student
+
 ![Delete student](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/DeleteStudent.PNG)
+
 1. Open icon Delete student
 2. Choose pole
 3. Write in this pole Lastname and name
@@ -55,7 +60,9 @@ If you want to delete more students - repeat all this steps again.
 
 ## Set student
 In this, you can change Lastname, name and team in student if you write incurred date.
+
 ![Set Student](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/SetStudent.PNG)
+
 1. Open icon Set Student
 2. Choose first pole
 3. Write in this pole Lastname, name and team
@@ -68,6 +75,7 @@ If you want to set another student in your database - repeat all this steps agai
 
 ##Show all student
 In this, you can see table students
+
 ![Show all Student](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/ShowStudent.PNG)
 
 In this table you can see all students. In column Question you can see ball of student. And in column Answer and Bonus mark too.
@@ -77,11 +85,14 @@ Press Return to move in Main Menu
 ## Clear Marks
 In this you can clean all marks in table students.
 If you press a button "ClearMarks" you can see this massage.
+
 ![Clear Marks](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/ClearMarks.PNG)
 
 ## Random students
 In this you can see main function of our application. You can have random student who ask question and who answer in this question.
+
 ![Random student](https://github.com/AliaksandrMoroz/RandomApl/blob/master/screens/RandomStudent.PNG)
+
 In this icon you can see a pole who ask and who answers. 
 If turn on in flag "Good Question" is a student ask a good question and in his column press "1" ball in Question.
 If turn on in flag "Good Answer" it's mean that student who answer a question we set "1" ball in column Answer of this student.
