@@ -1,8 +1,16 @@
 # Random application
 ## Introduction
-This application was developed by Team No. 12
-Developers: Alexander Moroz, Vasily Shelkov, Viktor Sazhin, Yaroslav Detsky.
+This application was developed by Alexandr Moroz, Vasily Shelkov, Viktor Sazhin and Yaroslav Detsky.
 Random application is a program with which you can add participants to the list, generate and receive random questioners and responders, set scores and display a general list.
+
+
+##Stack
+In this project we use:
+* JavaFx 17.0.2
+* Java 11
+* Maven
+* MySQL
+* FlyWay to connect and create a table in db
 
 ## Run your JavaFX app via IntelliJ  
 1. Run your DataBaseConnection and set your url, user and password of your DB Server in pom.xml file.
@@ -80,6 +88,7 @@ If turn on in flag "Good Question" is a student ask a good question and in his c
 If turn on in flag "Good Answer" it's mean that student who answer a question we set "1" ball in column Answer of this student.
 If you turn on in flag "Bonus Mark" it's mean that we add a bonus "1" ball to column "Bonus mark" of this student.
 And if you turn off in any flag it's mean that we set "0" in any column of students what you choose.
+
 **RUN RANDOM**
 1. Press button Start
 2. Choose flag "Good ..." if a student ask/answer good question or not. Do how are mean.
@@ -88,10 +97,3 @@ And if you turn off in any flag it's mean that we set "0" in any column of stude
 
 And when all student ask or answer press Return to move in Main Menu.
 
-##Stack
-In this project we use:
-* JavaFx 17.0.2
-* JDK 11
-* Maven
-* MySQL
-* FlyWay to connect and create a table in db

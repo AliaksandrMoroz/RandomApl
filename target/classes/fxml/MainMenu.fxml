@@ -20,7 +20,7 @@
                 </Button>
 
                 <Button fx:id="clearMarksButton" layoutX="200.0" layoutY="503.0" mnemonicParsing="false"
-                        prefHeight="50.0" prefWidth="300.0" text="ClearMarks">
+                        prefHeight="50.0" prefWidth="300.0" text="Clear Marks">
                     <font>
                         <Font size="31.0"/>
                     </font>
@@ -59,7 +59,7 @@
                 </Button>
             </children>
         </AnchorPane>
-        <Label layoutX="150.0" prefHeight="85.0" prefWidth="477.0" text="Random App" textAlignment="CENTER"
+        <Label layoutX="100.0" prefHeight="85.0" prefWidth="500.0" text="Random students" textAlignment="CENTER"
                textFill="#da3e3e" wrapText="true">
             <font>
                 <Font name="New Peninim MT" size="64.0"/>
