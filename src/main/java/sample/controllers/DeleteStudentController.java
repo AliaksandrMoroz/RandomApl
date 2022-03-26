@@ -10,10 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
+import sample.service.DeleteStudentService;
 
 public class DeleteStudentController {
     Main main = new Main();
     Stage stage = new Stage();
+    DeleteStudentService deleteStudentService;
 
     @FXML
     private ResourceBundle resources;
@@ -43,16 +45,8 @@ public class DeleteStudentController {
                 exception.printStackTrace();
             }
         });
-        deleteStudentButton.setOnAction(event -> {
-            String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if (!addText.equals("") && DataBaseHandler.getAllStudentsFromDB().stream()
-                    .anyMatch(student ->
-                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
-                DataBaseHandler.deleteStudentFromDB(addText[0], addText[1]);
-                errorText.setText(addText[0] + " " + addText[1] + " successfully deleted!");
-                enterNameLastnameField.setText("");
-            } else
-                errorText.setText("Wrong data inserted!");
-        });
+        deleteStudentButton.setOnAction(event ->
+                deleteStudentService.deleteStudent(enterNameLastnameField, errorText));
+
     }
 }

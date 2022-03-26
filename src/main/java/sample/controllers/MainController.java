@@ -12,9 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
+import sample.service.MainService;
 
 public class MainController {
-    Stage stage = new Stage();
+    MainService mainService;
 
     @FXML
     private ResourceBundle resources;
@@ -45,36 +46,18 @@ public class MainController {
 
     @FXML
     void initialize() {
-        clickButton(addStudentButton, "/fxml/AddStudentMenu.fxml");
+        mainService.clickButton(addStudentButton, "/fxml/AddStudentMenu.fxml");
 
-        clickButton(deleteStudentButton, "/fxml/DeleteStudent.fxml");
+        mainService.clickButton(deleteStudentButton, "/fxml/DeleteStudent.fxml");
 
-        clickButton(setStudentButton, "/fxml/SetStudent.fxml");
+        mainService.clickButton(setStudentButton, "/fxml/SetStudent.fxml");
 
-        clickButton(showStudentButton, "/fxml/ShowStudents.fxml");
+        mainService.clickButton(showStudentButton, "/fxml/ShowStudents.fxml");
 
-        clickButton(randomStudentVsStudentButton, "/fxml/RandomStudentVsStudent.fxml");
+        mainService.clickButton(randomStudentVsStudentButton, "/fxml/RandomStudentVsStudent.fxml");
 
-        clearMarksButton.setOnAction((event) -> {
-            DataBaseHandler.clearMarks();
-            successText.setText(" Marks successfully cleared!");
-        });
+        clearMarksButton.setOnAction((event) -> mainService.clear(successText));
     }
 
-    private void clickButton(Button addStudentButton, String s) {
-        addStudentButton.setOnAction(event -> {
-            addStudentButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(s));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        });
-    }
+
 }

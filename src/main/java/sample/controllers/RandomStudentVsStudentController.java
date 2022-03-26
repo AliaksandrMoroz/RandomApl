@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
 import sample.entity.Student;
+import sample.service.RandomStudentService;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class RandomStudentVsStudentController {
     Main main = new Main();
     Stage stage = new Stage();
+    RandomStudentService randomStudentService;
 
     @FXML
     private ResourceBundle resources;
@@ -52,19 +54,13 @@ public class RandomStudentVsStudentController {
     @FXML
     private Label studentNameQuestion;
 
-    List<Student> listStudent = new ArrayList<>();
-    List<Student> listStudentQuestion = new ArrayList<>();
-    List<Student> listStudentAnswer = new ArrayList<>();
-    Student studentQuestion;
-    Student studentAnswer;
 
     @FXML
     void initialize() {
-        listStudent.addAll(DataBaseHandler.getAllStudentsFromDB());
-        updateLists();
+
         backButton.setOnAction(event -> {
             for (Student student :
-                    listStudent) {
+                    randomStudentService.getListStudent()) {
                 DataBaseHandler.setQuestionAndAnswerAndBalls(student);
             }
             backButton.getScene().getWindow().hide();
@@ -75,91 +71,12 @@ public class RandomStudentVsStudentController {
             }
         });
 
-        startRandom.setOnAction(event -> {
-            updateLists();
-            studentQuestion = listStudentQuestion.get((int) (Math.random() * listStudentQuestion.size()));
-            studentAnswer = listStudentAnswer.get((int) (Math.random() * listStudentAnswer.size()));
-            firstPair();
-        });
+        startRandom.setOnAction(event -> randomStudentService.firstPair(errorTEXT, studentNameQuestion, studentNameAnswer));
 
-        nextRandom.setOnAction(event -> {
-            if (goodQuestionCheck.isSelected()) {
-                studentQuestion.setQuestion("1");
-                goodQuestionCheck.fire();
-            } else studentQuestion.setQuestion("0");
-
-            if (goodAnswerCheck.isSelected()) {
-                studentAnswer.setAnswer("1");
-                goodAnswerCheck.fire();
-            } else studentAnswer.setAnswer("0");
-
-            if (bonusBallCheckAnswer.isSelected()) {
-                studentAnswer.setBonusBall("1");
-                bonusBallCheckAnswer.fire();
-            }
-
-            for (Student student :
-                    listStudent) {
-                if (student.getId() == studentAnswer.getId()) {
-                    student = studentAnswer;
-                }
-                if (student.getId() == studentQuestion.getId()) {
-                    student = studentQuestion;
-                }
-            }
-            updateLists();
-            nextPair();
-            studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-            studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
-        });
+        nextRandom.setOnAction(event -> randomStudentService.nextRandom(
+                goodQuestionCheck, goodAnswerCheck, bonusBallCheckAnswer, studentNameAnswer, studentNameQuestion,errorTEXT)
+        );
     }
 
-    private void updateLists() {
-        listStudentQuestion = listStudent.stream().filter(a -> a.getQuestion().equals("x")).collect(Collectors.toList());
-        listStudentAnswer = listStudent.stream().filter(a -> a.getAnswer().equals("x")).collect(Collectors.toList());
-    }
 
-    private void nextPair() {
-        updateLists();
-        if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
-            errorTEXT.setText("There is no more students left.");
-        } else {
-            if (studentAnswer.getQuestion().equals("x")) {
-                studentQuestion = studentAnswer;
-                studentAnswer = listStudentAnswer.stream()
-                        .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
-                        .collect(Collectors.toList())
-                        .get((int) (Math.random() * listStudentAnswer.stream()
-                                .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
-                                //TODO Заменить следующие две строчки одной
-//                                .collect(Collectors.toList())
-//                                .size()));
-                                .count()));
-                if (!studentAnswer.getTeam().equals(studentQuestion.getTeam())) {
-                    studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-                } else nextPair();
-            }
-        }
-    }
-
-    private void firstPair() {
-        updateLists();
-        if (listStudentAnswer.isEmpty() || listStudentQuestion.isEmpty()) {
-            errorTEXT.setText("There is no more students left.");
-        } else {
-            studentNameQuestion.setText(studentQuestion.getLastname() + " " + studentQuestion.getName());
-            studentAnswer = listStudentAnswer.stream()
-                    .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
-                    .collect(Collectors.toList())
-                    .get((int) (Math.random() * listStudentAnswer.stream()
-                            .filter(a -> !a.equals(studentQuestion) && (a.getAnswer().equals("x")))
-                            //TODO Заменить следующие две строчки одной
-//                            .collect(Collectors.toList())
-//                            .size()));
-                            .count()));
-            if (studentAnswer.getQuestion().equals("x") && (!studentAnswer.getTeam().equals(studentQuestion.getTeam()))) {
-                studentNameAnswer.setText(studentAnswer.getLastname() + " " + studentAnswer.getName());
-            } else firstPair();
-        }
-    }
 }

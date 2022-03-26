@@ -13,7 +13,7 @@
         <AnchorPane layoutX="1.0" layoutY="90.0" prefHeight="619.0" prefWidth="700.0"
                     style="-fx-background-color: #faebd7#faebd7;">
             <children>
-                <Button fx:id="addStudentButton" layoutX="202.0" layoutY="431.0" mnemonicParsing="false"
+                <Button fx:id="setStudentButton" layoutX="202.0" layoutY="431.0" mnemonicParsing="false"
                         prefHeight="50.0" prefWidth="300.0" text="Save Student">
                     <font>
                         <Font size="31.0"/>

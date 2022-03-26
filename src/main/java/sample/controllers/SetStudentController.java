@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DataBase.DataBaseHandler;
 import sample.Main;
+import sample.service.SetStudentService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 public class SetStudentController {
     Main main = new Main();
     Stage stage = new Stage();
+    SetStudentService setStudentService;
 
     @FXML
     private ResourceBundle resources;
@@ -22,7 +24,7 @@ public class SetStudentController {
     private URL location;
 
     @FXML
-    private Button addStudentButton;
+    private Button setStudentButton;
 
     @FXML
     private Button backButton;
@@ -47,19 +49,7 @@ public class SetStudentController {
             }
         });
 
-        addStudentButton.setOnAction(event -> {
-            String[] addText = enterNameLastnameField.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            String[] newStudent = newStudentText.getText().trim().split("[^a-zA-Zа-яА-Я0-9_]+");
-            if (!addText.equals("") && DataBaseHandler.getAllStudentsFromDB().stream()
-                    .anyMatch(student ->
-                            (student.getName().equals(addText[1]) && student.getLastname().equals(addText[0])))) {
-                DataBaseHandler.setStudentFromDB(addText[0], addText[1], newStudent[0], newStudent[1], newStudent[2]);
-                errorText.setText(addText[0] + " " + addText[1] + " successfully changed!");
-                enterNameLastnameField.setText("");
-                newStudentText.setText("");
-            } else {
-                errorText.setText("Wrong data inserted!");
-            }
-        });
+        setStudentButton.setOnAction(event -> setStudentService.set(enterNameLastnameField,newStudentText,errorText)
+        );
     }
 }
