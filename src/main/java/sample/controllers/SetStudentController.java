@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class SetStudentController {
     Main main = new Main();
     Stage stage = new Stage();
-    SetStudentService setStudentService;
+    SetStudentService setStudentService = new SetStudentService();
 
     @FXML
     private ResourceBundle resources;

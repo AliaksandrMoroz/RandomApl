@@ -15,7 +15,7 @@ import sample.service.DeleteStudentService;
 public class DeleteStudentController {
     Main main = new Main();
     Stage stage = new Stage();
-    DeleteStudentService deleteStudentService;
+    DeleteStudentService deleteStudentService = new DeleteStudentService();
 
     @FXML
     private ResourceBundle resources;

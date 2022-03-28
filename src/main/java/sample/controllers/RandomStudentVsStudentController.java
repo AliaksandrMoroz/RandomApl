@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class RandomStudentVsStudentController {
     Main main = new Main();
     Stage stage = new Stage();
-    RandomStudentService randomStudentService;
+    RandomStudentService randomStudentService = new RandomStudentService();
 
     @FXML
     private ResourceBundle resources;

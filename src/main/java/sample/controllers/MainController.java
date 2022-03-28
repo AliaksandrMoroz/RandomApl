@@ -15,7 +15,7 @@ import sample.DataBase.DataBaseHandler;
 import sample.service.MainService;
 
 public class MainController {
-    MainService mainService;
+    MainService mainService = new MainService();
 
     @FXML
     private ResourceBundle resources;
